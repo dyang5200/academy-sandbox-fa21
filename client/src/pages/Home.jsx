@@ -1,33 +1,37 @@
 // @flow
-import React, { useEffect, useState } from 'react';
-import type { Node } from 'react';
-
-import { getSampleResponse } from '../utils/apiWrapper';
+import React from 'react';
+import { Row, Col } from 'reactstrap';
 
 import '../css/Home.css';
 
-function Home(): Node {
-  const [text, setText] = useState('You did not run local API!');
-
-  useEffect(() => {
-    const populateText = async () => {
-      const resp = await getSampleResponse();
-      if (!resp.error) {
-        setText(resp.data.result);
-      }
-    };
-
-    populateText();
-  }, []);
-
+function Home() {
   return (
     <>
-      <h1>MERN Template</h1>
+      <h1>Academy Sandbox</h1>
+      <h2>a place to practice</h2>
       <p>
-        Below will tell you if the API is running.
-        <br />
-        {text}
+        <img src="..\utils\images\yousef_ahmed.jpg" alt="Yousef" />
+        <a href="/ashwin"> hi </a>
       </p>
+
+      <Row>
+        <Col>
+          <Row>Ashwin</Row>
+          <Row>Danielle</Row>
+          <Row>Aaron</Row>
+        </Col>
+
+        <Col>
+          <Row>Anthony</Row>
+          <Row>Eesha</Row>
+          <Row>Ellie</Row>
+        </Col>
+
+        <Col>
+          <Row>Grace</Row>
+          <Row>Jessica</Row>
+        </Col>
+      </Row>
     </>
   );
 }
