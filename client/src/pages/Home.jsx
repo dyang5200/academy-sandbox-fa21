@@ -1,37 +1,123 @@
 // @flow
 import React from 'react';
-import { Row, Col } from 'reactstrap';
-
+import { Table } from 'reactstrap';
 import '../css/Home.css';
 
+// Add image files here
+import yousef from '../utils/images/yousef_ahmed.jpg';
+
 function Home() {
+  const people = [
+    {
+      Aaron: {
+        link: '/aaron',
+        image: yousef,
+      },
+      Anthony: {
+        link: '/anthony',
+        image: yousef,
+      },
+      Eesha: {
+        link: '/eesha',
+        image: yousef,
+      },
+    },
+    {
+      Ellie: {
+        link: '/ellie',
+        image: yousef,
+      },
+      Grace: {
+        link: '/grace',
+        image: yousef,
+      },
+      Jessica: {
+        link: '/jessica',
+        image: yousef,
+      },
+    },
+    {
+      Ashwin: {
+        link: '/ashwin',
+        image: yousef,
+      },
+      Danielle: {
+        link: '/danielle',
+        image: yousef,
+      },
+    },
+  ];
+
   return (
     <>
-      <h1>Academy Sandbox</h1>
-      <h2>a place to practice</h2>
-      <p>
-        <img src="..\utils\images\yousef_ahmed.jpg" alt="Yousef" />
-        <a href="/ashwin"> hi </a>
+      <h1 id="home-heading" style={{ marginBottom: 40, fontSize: 60 }}>
+        Academy Sandbox
+      </h1>
+      <p id="regular-text" style={{ marginBottom: 40, fontSize: 20 }}>
+        a place to practice what you learn
       </p>
 
-      <Row>
-        <Col>
-          <Row>Ashwin</Row>
-          <Row>Danielle</Row>
-          <Row>Aaron</Row>
-        </Col>
+      <p>
+        {people.forEach((row) => (
+          <div>HIII {console.log(row)}</div>
+        ))}
+      </p>
 
-        <Col>
-          <Row>Anthony</Row>
-          <Row>Eesha</Row>
-          <Row>Ellie</Row>
-        </Col>
-
-        <Col>
-          <Row>Grace</Row>
-          <Row>Jessica</Row>
-        </Col>
-      </Row>
+      <Table>
+        <tbody>
+          <tr>
+            {Object.keys(people[0]).map((name) => (
+              <td key={name} style={{ textAlign: 'center' }}>
+                <img
+                  id="profile"
+                  alt={name}
+                  src={people[0][name]['image']}
+                  width="120"
+                  height="120"
+                />
+                <br />
+                <a id="profile-name" href={people[0][name]['link']}>
+                  {name}
+                </a>
+              </td>
+            ))}
+          </tr>
+          <tr>
+            {Object.keys(people[1]).map((name) => (
+              <td key={name} style={{ textAlign: 'center' }}>
+                <img
+                  id="profile"
+                  alt="Avatar"
+                  src={people[1][name]['image']}
+                  width="120"
+                  height="120"
+                />
+                <br />
+                <a id="profile-name" href={people[1][name]['link']}>
+                  {name}
+                </a>
+              </td>
+            ))}
+          </tr>
+          <tr>
+            {Object.keys(people[2]).map((name) => (
+              <td key={name} style={{ textAlign: 'center' }}>
+                <img
+                  id="profile"
+                  alt="Avatar"
+                  src={people[2][name]['image']}
+                  width="120"
+                  height="120"
+                />
+                <br />
+                <a id="profile-name" href={people[2][name]['link']}>
+                  {name}
+                </a>
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </Table>
     </>
   );
 }
